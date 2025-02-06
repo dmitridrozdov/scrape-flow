@@ -2,6 +2,7 @@
 
 import { CoinsIcon, HomeIcon, Layers2Icon, ShieldCheckIcon } from 'lucide-react';
 import React from 'react'
+import Logo from './Logo';
 
 const routs = [
     {
@@ -46,7 +47,7 @@ function DesktopSidebar() {
         text-muted-foreground border-r-2 border-separate
     ">
         <div className="flex items-center justify-center gap-2 border-b-[1px] border-separate p-4">
-            DesktopSidebar
+            <Logo />
         </div>
     </div>
   )
