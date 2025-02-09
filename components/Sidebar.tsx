@@ -57,6 +57,7 @@ function DesktopSidebar() {
         <div className="flex items-center justify-center gap-2 border-b-[1px] border-separate p-4">
             <Logo />
         </div>
+        <div className='p-2'>todo credits</div>
         <div className='flex flex-col p2'>
             {routes.map((route) => (
                 <Link 
