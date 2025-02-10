@@ -1,4 +1,6 @@
 import BreadcrumbHeader from '@/components/BreadcrumbHeader'
+import { AppProviders } from '@/components/providers/AppProviders'
+import { ModeToggle } from '@/components/providers/ThemeModeToggle'
 import DesktopSidebar from '@/components/Sidebar'
 import { Separator } from '@radix-ui/react-context-menu'
 import React from 'react'
@@ -10,11 +12,16 @@ function layout({children}:{children:React.ReactNode}) {
         <div className="flex flex-col flex-1 min-h-screen">
             <header className="flex justify-between items-center px-6 py-4 h-[50px] container"> 
                 <BreadcrumbHeader />
+                <div className='flex items-center gap-1'>
+                    <ModeToggle />
+                </div>
             </header>
             <Separator />
             <div className="overflow-auto">
                 <div className="flex-1 container py-4 text-accent-foreground">
-                    {children}
+                    <AppProviders>
+                        {children}
+                    </AppProviders>
                 </div>
             </div>
         </div>
