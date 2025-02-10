@@ -77,3 +77,14 @@ function DesktopSidebar() {
 }
 
 export default DesktopSidebar
+
+export function MobileSidebar() {
+    const pathName = usePathname();
+    const activeRoute = routes.find(
+        route => route.href.length >0 && pathName.includes
+        (route.href)
+    ) || routes[0]
+    return (
+        <div className='block border-separate bg-background md:hidden'>Mobile Side Bar</div>
+    )
+}
