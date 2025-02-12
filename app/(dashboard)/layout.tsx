@@ -2,6 +2,7 @@ import BreadcrumbHeader from '@/components/BreadcrumbHeader'
 import { AppProviders } from '@/components/providers/AppProviders'
 import { ModeToggle } from '@/components/providers/ThemeModeToggle'
 import DesktopSidebar from '@/components/Sidebar'
+import { SignedIn, UserButton } from '@clerk/nextjs'
 import { Separator } from '@radix-ui/react-context-menu'
 import React from 'react'
 
@@ -14,6 +15,9 @@ function layout({children}:{children:React.ReactNode}) {
                 <BreadcrumbHeader />
                 <div className='flex items-center gap-1'>
                     <ModeToggle />
+                    <SignedIn>
+                        <UserButton />
+                    </SignedIn>
                 </div>
             </header>
             <Separator />
