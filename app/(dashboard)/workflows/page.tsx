@@ -1,4 +1,6 @@
-import React from 'react'
+import { Skeleton } from '@/components/ui/skeleton'
+import { User } from 'lucide-react'
+import React, { Suspense } from 'react'
 
 const page = () => {
   return (
@@ -9,8 +11,32 @@ const page = () => {
                 <p className='text-muted-foreground'>Create and manage your workflows</p>
             </div>
         </div>
+
+        <div className='h-full py-6'>
+            <Suspense fallback={<UserWorkflowSkeleton />}>
+                <UserWorkflow />
+            </Suspense>
+        </div>
     </div>
   )
 }
+
+const UserWorkflowSkeleton = () => {
+    return (
+        <div className='space-y-2'>
+            {
+                [1,2,3,4].map(i => <Skeleton key={i} className='h-32 w-full' />)
+            }
+        </div>
+    )
+}
+
+async function UserWorkflow() {
+    return (
+        <div>
+           
+        </div>
+    )
+}   
 
 export default page
