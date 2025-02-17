@@ -1,4 +1,5 @@
 import { Skeleton } from '@/components/ui/skeleton'
+import { waitFor } from '@/lib/helper/waitFor'
 import { User } from 'lucide-react'
 import React, { Suspense } from 'react'
 
@@ -32,6 +33,7 @@ const UserWorkflowSkeleton = () => {
 }
 
 async function UserWorkflow() {
+    await waitFor(3000)
     return (
         <div>
            
