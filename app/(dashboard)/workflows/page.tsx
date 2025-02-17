@@ -1,6 +1,7 @@
+import { GetWorkflowsForUser } from '@/actions/workflows/getWorkflowsForUser'
+import { Alert, AlertTitle } from '@/components/ui/alert'
 import { Skeleton } from '@/components/ui/skeleton'
-import { waitFor } from '@/lib/helper/waitFor'
-import { User } from 'lucide-react'
+import { AlertCircle, User } from 'lucide-react'
 import React, { Suspense } from 'react'
 
 const page = () => {
@@ -33,7 +34,15 @@ const UserWorkflowSkeleton = () => {
 }
 
 async function UserWorkflow() {
-    await waitFor(3000)
+    const workflows = await GetWorkflowsForUser()
+    if(!workflows) {
+        return(
+            <Alert variant={'destructive'}>
+                <AlertCircle className='h-4 w-4' />
+                <AlertTitle>Error</AlertTitle>
+            </Alert>
+        )
+    }
     return (
         <div>
            
