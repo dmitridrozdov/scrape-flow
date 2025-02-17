@@ -1,5 +1,5 @@
 import { GetWorkflowsForUser } from '@/actions/workflows/getWorkflowsForUser'
-import { Alert, AlertTitle } from '@/components/ui/alert'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Skeleton } from '@/components/ui/skeleton'
 import { AlertCircle, User } from 'lucide-react'
 import React, { Suspense } from 'react'
@@ -40,12 +40,12 @@ async function UserWorkflow() {
             <Alert variant={'destructive'}>
                 <AlertCircle className='h-4 w-4' />
                 <AlertTitle>Error</AlertTitle>
+                <AlertDescription>Something went wrong</AlertDescription>
             </Alert>
         )
     }
     return (
         <div>
-           
         </div>
     )
 }   
