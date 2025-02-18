@@ -34,8 +34,10 @@ const UserWorkflowSkeleton = () => {
 }
 
 async function UserWorkflow() {
-    const workflows = await GetWorkflowsForUser()
-    if(!workflows) {
+    try {
+        const workflows = await GetWorkflowsForUser()
+        return <div></div>
+    } catch (error) {
         return(
             <Alert variant={'destructive'}>
                 <AlertCircle className='h-4 w-4' />
@@ -44,10 +46,6 @@ async function UserWorkflow() {
             </Alert>
         )
     }
-    return (
-        <div>
-        </div>
-    )
 }   
 
 export default page
