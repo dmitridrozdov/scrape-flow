@@ -1,7 +1,7 @@
 import { GetWorkflowsForUser } from '@/actions/workflows/getWorkflowsForUser'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Skeleton } from '@/components/ui/skeleton'
-import { AlertCircle, User } from 'lucide-react'
+import { AlertCircle, InboxIcon, User } from 'lucide-react'
 import React, { Suspense } from 'react'
 
 const page = () => {
@@ -16,7 +16,7 @@ const page = () => {
 
         <div className='h-full py-6'>
             <Suspense fallback={<UserWorkflowSkeleton />}>
-                <UserWorkflow />
+                <UserWorkflows />
             </Suspense>
         </div>
     </div>
@@ -33,11 +33,9 @@ const UserWorkflowSkeleton = () => {
     )
 }
 
-async function UserWorkflow() {
-    try {
-        const workflows = await GetWorkflowsForUser()
-        return <div></div>
-    } catch (error) {
+async function UserWorkflows() {
+    const workflows = await GetWorkflowsForUser()
+    if (!workflows) {
         return(
             <Alert variant={'destructive'}>
                 <AlertCircle className='h-4 w-4' />
@@ -46,6 +44,24 @@ async function UserWorkflow() {
             </Alert>
         )
     }
+
+    if(workflows.length === 0) {    
+        return (
+            <div className='flex flex-col items-center gap-4 h-full justify-center'>
+                <div className='flex items-center justify-center w-20 h-20bg-accent rounded-full'>
+                    <InboxIcon size={40} className='stroke-primary' />
+                </div>
+                <div className='flex flex-col gap-1 text-center'>
+                    <p className='font-bold'>No Workflows</p>
+                    <p className='text-sm text-muted-foreground'>
+                        Click the button below to create your first workflow
+                    </p>
+                </div>
+            </div>
+        )
+    }
+
+    return <div></div>
 }   
 
 export default page
