@@ -59,7 +59,7 @@ async function UserWorkflows() {
                         Click the button below to create your first workflow
                     </p>
                 </div>
-                <CreateWorfklowDialog triggerText='Create workflow' />
+                <CreateWorfklowDialog triggerText='Create your first workflow' />
             </div>
         )
     }
