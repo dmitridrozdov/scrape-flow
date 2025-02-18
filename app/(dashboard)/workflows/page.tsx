@@ -3,6 +3,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Skeleton } from '@/components/ui/skeleton'
 import { AlertCircle, InboxIcon, User } from 'lucide-react'
 import React, { Suspense } from 'react'
+import CreateWorfklowDialog from './_components/CreateWorfklowDialog'
 
 const page = () => {
   return (
@@ -10,8 +11,9 @@ const page = () => {
         <div className='flex justify-between'>
             <div className='flex flex-col'>
                 <h1 className='text-3xl font-bold'>Workflows</h1>
-                <p className='text-muted-foreground'>Create and manage your workflows</p>
+                <p className='text-muted-foreground'>Manage your workflows</p>
             </div>
+            <CreateWorfklowDialog />
         </div>
 
         <div className='h-full py-6'>
@@ -57,6 +59,7 @@ async function UserWorkflows() {
                         Click the button below to create your first workflow
                     </p>
                 </div>
+                <CreateWorfklowDialog triggerText='Create workflow' />
             </div>
         )
     }
