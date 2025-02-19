@@ -3,7 +3,7 @@ import { AppProviders } from '@/components/providers/AppProviders'
 import { ModeToggle } from '@/components/providers/ThemeModeToggle'
 import DesktopSidebar from '@/components/Sidebar'
 import { SignedIn, UserButton } from '@clerk/nextjs'
-import { Separator } from '@radix-ui/react-context-menu'
+import { Separator } from "@/components/ui/separator"
 import React from 'react'
 
 function layout({children}:{children:React.ReactNode}) {
