@@ -3,6 +3,8 @@
 import React, { useState } from 'react'
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from '@/components/ui/button'
+import { Layers2Icon } from 'lucide-react'
+import CustomDialogHeader from '@/components/CustomDialogHeader'
 
 const CreateWorfklowDialog = ({ triggerText }: { triggerText?: string }) => {
     const [open, setOpen] = useState(false)
@@ -12,7 +14,11 @@ const CreateWorfklowDialog = ({ triggerText }: { triggerText?: string }) => {
             <Button>{triggerText ?? "Create workflow"}</Button>
         </DialogTrigger>
         <DialogContent className='px-0'>
-            <h1>Workflow</h1>
+            <CustomDialogHeader
+                icon={Layers2Icon}
+                title="Create workflow"
+                subTitle="Start building your workflow"
+            />
         </DialogContent>
     </Dialog>
   )
