@@ -46,7 +46,7 @@ const CreateWorfklowDialog = ({ triggerText }: { triggerText?: string }) => {
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>
+                                    <FormLabel className='flex gap-1 items-center'>
                                         Name
                                         <p className='text-xs text-primary'>(required)</p>
                                     </FormLabel>
