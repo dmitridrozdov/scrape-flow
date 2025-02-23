@@ -18,6 +18,7 @@ import {
     FormLabel,
     FormMessage,
 } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
 
 const CreateWorfklowDialog = ({ triggerText }: { triggerText?: string }) => {
     const [open, setOpen] = useState(false)
@@ -37,6 +38,31 @@ const CreateWorfklowDialog = ({ triggerText }: { triggerText?: string }) => {
                 title="Create workflow"
                 subTitle="Start building your workflow"
             />
+            <div className='p-6'>
+                <Form {...form}>
+                    <form className='space-y-8 w-full'>
+                        <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>
+                                        Name
+                                        <p className='text-xs text-primary'>(required)</p>
+                                    </FormLabel>
+                                    <FormControl>
+                                        <Input {...field} />
+                                    </FormControl>
+                                    <FormDescription>
+                                        Give your workflow a name
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </form>
+                </Form>
+            </div>
         </DialogContent>
     </Dialog>
   )
