@@ -19,6 +19,7 @@ import {
     FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 
 const CreateWorfklowDialog = ({ triggerText }: { triggerText?: string }) => {
     const [open, setOpen] = useState(false)
@@ -60,6 +61,28 @@ const CreateWorfklowDialog = ({ triggerText }: { triggerText?: string }) => {
                                 </FormItem>
                             )}
                         />
+
+                        <FormField
+                            control={form.control}
+                            name="description"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className='flex gap-1 items-center'>
+                                        Description
+                                        <p className='text-xs text-muted-foreground'>(optional)</p>
+                                    </FormLabel>
+                                    <FormControl>
+                                        <Textarea className='resize-none' {...field} />
+                                    </FormControl>
+                                    <FormDescription>
+                                        Provide the brief description of your workflow
+                                        <br /> This is optional but helps you remember what your workflow does
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <Button type='submit' className='w-full'>Create workflow</Button>
                     </form>
                 </Form>
             </div>
