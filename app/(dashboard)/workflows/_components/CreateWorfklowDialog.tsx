@@ -34,9 +34,11 @@ const CreateWorfklowDialog = ({ triggerText }: { triggerText?: string }) => {
     const {mutate, isPending} = useMutation({
         mutationFn: createWorkflow,
         onSuccess: () => {
-            toast.success("Workflow created successfully")
+            toast.success("Workflow created successfully", {id: "create-workflow"})
         },
-        onError: () => {}
+        onError: () => {
+            toast.error("Failed to create workflow", {id: "create-workflow"})
+        }
     })
 
   return (
