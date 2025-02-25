@@ -20,12 +20,20 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { useMutation } from '@tanstack/react-query'
+import { createWorkflow } from '@/actions/workflows/createWorkflow'
 
 const CreateWorfklowDialog = ({ triggerText }: { triggerText?: string }) => {
     const [open, setOpen] = useState(false)
     const form = useForm<createWorkflowSchemaType>({
         resolver: zodResolver(createWorkflowSchema),
         defaultValues: {}
+    })
+
+    const {mutate, isPending} = useMutation({
+        mutationFn: createWorkflow,
+        onSuccess: () => {},
+        onError: () => {}
     })
 
   return (
