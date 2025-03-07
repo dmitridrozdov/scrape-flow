@@ -43,7 +43,8 @@ const CreateWorfklowDialog = ({ triggerText }: { triggerText?: string }) => {
 
     const onSubmit = useCallback((values: createWorkflowSchemaType) => {
         toast.loading("Creating workflow...", {id: "create-workflow"})
-    }, [])
+        mutate(values)
+    }, [mutate])
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -58,7 +59,7 @@ const CreateWorfklowDialog = ({ triggerText }: { triggerText?: string }) => {
             />
             <div className='p-6'>
                 <Form {...form}>
-                    <form className='space-y-8 w-full'>
+                    <form className='space-y-8 w-full' onSubmit={form.handleSubmit(onSubmit)}>
                         <FormField
                             control={form.control}
                             name="name"
