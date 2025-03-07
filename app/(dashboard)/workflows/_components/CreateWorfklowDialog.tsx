@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from '@/components/ui/button'
 import { Layers2Icon } from 'lucide-react'
@@ -40,6 +40,10 @@ const CreateWorfklowDialog = ({ triggerText }: { triggerText?: string }) => {
             toast.error("Failed to create workflow", {id: "create-workflow"})
         }
     })
+
+    const onSubmit = useCallback((values: createWorkflowSchemaType) => {
+        toast.loading("Creating workflow...", {id: "create-workflow"})
+    }, [])
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
