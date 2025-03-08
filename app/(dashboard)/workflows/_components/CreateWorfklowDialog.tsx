@@ -3,7 +3,7 @@
 import React, { useCallback, useState } from 'react'
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from '@/components/ui/button'
-import { Layers2Icon } from 'lucide-react'
+import { Layers2Icon, Loader2 } from 'lucide-react'
 import CustomDialogHeader from '@/components/CustomDialogHeader'
 import { useForm } from 'react-hook-form'
 import { createWorkflowSchema, createWorkflowSchemaType } from '@/schema/workflow'
@@ -100,7 +100,14 @@ const CreateWorfklowDialog = ({ triggerText }: { triggerText?: string }) => {
                                 </FormItem>
                             )}
                         />
-                        <Button type='submit' className='w-full'>Create workflow</Button>
+                        <Button 
+                            disabled={isPending} 
+                            type='submit' 
+                            className='w-full'
+                        >
+                                {!isPending && "Proceed"}
+                                {isPending && <Loader2 className='animate-spin' />}
+                        </Button>
                     </form>
                 </Form>
             </div>
