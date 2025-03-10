@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import { WorflowStatus } from '@/types/workflow'
 import { Workflow } from '@prisma/client'
 import { FileTextIcon, PlayIcon } from 'lucide-react'
+import Link from 'next/link'
 import React from 'react'
 
 const statusColors = {
@@ -21,7 +22,16 @@ const WorkflowCard = ({workflow}: {workflow: Workflow}) => {
                 statusColors[workflow.status as WorflowStatus])}>
                 {isDraft ? <FileTextIcon className='h-5 w-5' /> : <PlayIcon className='h-5 w-5 text-white' />}
             </div>
-            <p className='text-sm text-muted-foreground'>{workflow.description}</p>
+            <div>
+                <h3 className='text-base font-bold text-muted-foreground flex items-center'>
+                    <Link 
+                        href={`/workflow/editor/${workflow.id}`}
+                        className='flex items-center hover:underline'
+                    >
+                        {workflow.name}
+                    </Link>
+                </h3>
+            </div>
         </CardContent>
     </Card>
   )
