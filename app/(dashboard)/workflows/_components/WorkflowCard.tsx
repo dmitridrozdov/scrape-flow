@@ -1,12 +1,24 @@
 "use client"
 
+import { Button, buttonVariants } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import { WorflowStatus } from '@/types/workflow'
 import { Workflow } from '@prisma/client'
-import { FileTextIcon, PlayIcon } from 'lucide-react'
+import { FileTextIcon, MoreVerticalIcon, PlayIcon, ShuffleIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuTrigger,
+    DropdownMenuSeparator
+} from '@/components/ui/dropdown-menu'
+import { Tooltip } from 'recharts'
+import { TooltipArrow } from '@radix-ui/react-tooltip'
+import TooltipWrapper from '@/components/TooltipWrapper'
 
 const statusColors = {
     [WorflowStatus.DRAFT]: "bg-yellow-400 text-yellow-600",
@@ -36,12 +48,51 @@ const WorkflowCard = ({workflow}: {workflow: Workflow}) => {
                                 Draft
                             </span>
                         }
-                    </h3>
+                    </h3>   
                 </div>
+            </div>
+            <div className='flex items-center space-x-2'>
+                <Link 
+                    href={`/workflow/editor/${workflow.id}`}
+                    className={
+                        cn(
+                            buttonVariants({
+                                variant: "outline",
+                                size: "sm",
+                            }),
+                            "flex items-center gap-2"
+                        )
+                    }
+                >
+                    <ShuffleIcon size={16} />
+                    Edit
+                </Link>
+                <WorkflowActions workflow={workflow} />
             </div>
         </CardContent>
     </Card>
   )
+}
+
+const WorkflowActions = ({workflow}: {workflow: Workflow}) => {
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant='outline' size='sm'>
+                    <TooltipWrapper content={"More actions"}>
+                        <MoreVerticalIcon size={18} />
+                    </TooltipWrapper>
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align='end'>
+                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                    <Link href={`/workflow/editor/${workflow.id}`}>Edit</Link>
+                </DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
+    )
 }
 
 export default WorkflowCard
